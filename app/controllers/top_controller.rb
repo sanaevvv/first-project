@@ -4,4 +4,7 @@ class TopController < ApplicationController
 
   def contacts
   end
+
+  def privacy
+  end
 end

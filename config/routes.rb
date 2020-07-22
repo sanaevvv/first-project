@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root 'top#index'
   get 'contacts' => 'top#contacts'
+  get 'privacy' => 'top#privacy'
 
   # 宿題：プライバシーポリシーページを作る（パスはprivacy）
+  # gitにもあげること！
 end
