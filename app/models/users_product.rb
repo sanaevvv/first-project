@@ -1,0 +1,2 @@
+class UsersProduct < ApplicationRecord
+end
