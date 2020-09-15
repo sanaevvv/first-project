@@ -1,1 +1,51 @@
-<p>トップページだよ<p>
+<div class="gnav">
+<% if current_user.present? %>
+     <p><%= current_user.name %>さんがログイン中です</p>
+     <%= link_to "ログアウト", session_path(id: current_user.id), method: :delete %>
+<% else %>
+     <%= link_to "ログイン", new_session_path %>
+<% end %>
+</div>
+
+<p class="img"><%= image_tag "sakura.jpg" %></p>
+
+     <p>トップページだよ<p>
+
+     <h2 class="ttl">ユーザー情報</h2>
+
+     <p><%= @user.name %></p>
+     <p><%= @user.age %>歳</p>
+     <p><%= @user.tel %></p>
+
+     <% @users.each do |user| %>
+          <p><%= user.name %></p>
+          <p><%= user.tel %></p>
+     <% end %>
+
+     <p><a href="<%= new_path %>">新規ユーザーを登録</a></p>
+
+     <h2 class="ttl">学校情報</h2>
+     <p><%= @school.name %></p>
+
+     <h2 class="ttl">商品情報</h2>
+     <p><%= @product.name %></p>
+     <p>価格：<%= @product.price %>円</p>
+     <p><%= @product.name %>の価格は<%= @product.price %>円です</p>
+
+     <% @product_stock.each do |product| %>
+          <p><%= product.name %>です</p>
+     <% end %>
+
+     <p><a href="<%= product_new_path %>">新規商品を登録</a></p>
+
+     <h2 class="ttl">生徒情報</h2>
+     <p><%= @student.name %>さんの性別は<%= @student.gender %>です</p>
+     <p><%= @student.name %>さんの年齢は<%= @student.age %>歳です</p>
+     <p><a href="<%= student_new_path %>">新入生を登録</a></p>
+
+     <h2 class="ttl">生徒一覧</h2>
+     <p><%= collection_select( :student, :name, @students, :id, :name,  include_blank: '選択してください') %></p>
+
+     <h2 class="ttl">ログイン</h2> 
+     <p><a href="<%= new_path %>">ログインする</a></p>   
+

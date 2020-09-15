@@ -1,0 +1,11 @@
+<%= form_with url: product_create_path, method: 'post' do |f| %>
+     <%= f.text_field :name, id: 'name', placeholder: '商品名', value: ''  %>
+     <%= f.number_field :price, id: 'price', placeholder: '価格', value: ''  %>
+     <%= f.number_field :stock, id: 'stock', placeholder: '在庫', value: ''  %>
+     <%= f.text_area :description, placeholder: '商品説明' %>
+
+     <%= f.submit '作成' %>
+
+<% end %>
+<p><a href="<%= root_path %>">トップページへ戻る</a></p>
+

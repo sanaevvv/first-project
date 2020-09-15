@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>初めてのRuby</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
+  <% if flash[:notice].present? || params[:notice].present? %>
+    <div class="flash-message-container">
+      <div class="notice-message"><i class="fas fa-check-circle"></i><span><%= flash[:notice] %><%= params[:notice] %></span></div>
+    </div>
+    <% elsif flash[:alert].present? || params[:alert].present? %>
+    <div class="flash-message-container">
+      <div class="alert-message"><i class="fas fa-exclamation-circle"></i><span><%= flash[:alert] %><%= params[:alert] %></span></div>
+    </div>
+  <% end %>
+  <main>
+  <div class="inner">
+  <%= render "shared/header" %>
+        <%= yield %>
+  <%= render "shared/footer" %>  
+  </div>
+  </main>
   </body>
+
 </html>

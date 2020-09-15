@@ -1,0 +1,8 @@
+<%= form_with url: user_create_path, method: 'post' do |f| %>
+     <%= f.text_field :name, id: 'name', placeholder: '名前', value: ''  %>
+     <%= f.number_field :age, id: 'age', placeholder: '年齢', value: ''  %>
+     <%= f.telephone_field :tel, id: 'tel', placeholder: '電話番号', value: ''  %>
+
+     <%= f.submit '作成' %>
+<% end %>
+<p><a href="<%= root_path %>">トップページへ戻る</a></p>

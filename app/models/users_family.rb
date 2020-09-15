@@ -1,0 +1,2 @@
+class UsersFamily < ApplicationRecord
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_23_120147) do
+ActiveRecord::Schema.define(version: 2020_09_15_102855) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -18,10 +18,14 @@ ActiveRecord::Schema.define(version: 2020_08_23_120147) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "memberships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
-    t.string "email", null: false
-    t.integer "password", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "families", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -58,6 +62,31 @@ ActiveRecord::Schema.define(version: 2020_08_23_120147) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "student_schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "students_id", null: false
+    t.bigint "schools_id", null: false
+    t.string "grade", default: "1年生", null: false, comment: "学年"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["schools_id"], name: "index_student_schools_on_schools_id"
+    t.index ["students_id"], name: "index_student_schools_on_students_id"
+  end
+
+  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "age"
+    t.string "tel"
+    t.string "gender"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "tutorials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -70,6 +99,27 @@ ActiveRecord::Schema.define(version: 2020_08_23_120147) do
     t.string "tel"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password"
+    t.string "email"
+  end
+
+  create_table "users_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_users_events_on_event_id"
+    t.index ["user_id"], name: "index_users_events_on_user_id"
+  end
+
+  create_table "users_families", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "family_id", null: false
+    t.string "relation", comment: "続柄"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["family_id"], name: "index_users_families_on_family_id"
+    t.index ["user_id"], name: "index_users_families_on_user_id"
   end
 
   create_table "users_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -92,6 +142,12 @@ ActiveRecord::Schema.define(version: 2020_08_23_120147) do
 
   add_foreign_key "product_categories", "categories"
   add_foreign_key "product_categories", "products"
+  add_foreign_key "student_schools", "schools", column: "schools_id"
+  add_foreign_key "student_schools", "students", column: "students_id"
+  add_foreign_key "users_events", "events"
+  add_foreign_key "users_events", "users"
+  add_foreign_key "users_families", "families"
+  add_foreign_key "users_families", "users"
   add_foreign_key "users_posts", "posts"
   add_foreign_key "users_posts", "users"
   add_foreign_key "users_products", "products"

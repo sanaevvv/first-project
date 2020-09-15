@@ -1,0 +1,21 @@
+<div>
+ <div>
+  <div>
+   <div>
+    <div>
+     <%= form_with url: sessions_path, method: 'post' do |f| %>
+          <p>メールアドレス</p>
+          <%= f.text_field :email, id: 'email', placeholder: 'メールアドレス', value: ''  %>
+          <p>パスワード</p>
+          <%= f.password_field :password, id: 'password', placeholder: 'パスワード', value: ''  %>
+     
+          <%= f.submit 'ログイン' %>
+     <% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<p><a href="<%= root_path %>">トップページへ戻る</a></p>
+
