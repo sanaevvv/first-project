@@ -7,6 +7,11 @@
 <% end %>
 </div>
 
+# 通常のリンクは、
+# ページを開く = GET
+# のリクエストを送りますよね。
+# それ以外に、POST, PUT, DELET等のリクエストを送りたい場合に、methodを記述します！
+
 <p class="img"><%= image_tag "sakura.jpg" %></p>
 
      <p>トップページだよ<p>
@@ -48,4 +53,15 @@
 
      <h2 class="ttl">ログイン</h2> 
      <p><a href="<%= new_path %>">ログインする</a></p>   
+
+     # <% if flash[:notice].present? || params[:notice].present? %>
+  #   <div class="flash-message-container">
+  #     <div class="notice-message"><i class="fas fa-check-circle"></i><span><%= flash[:notice] %><%= params[:notice] %></span></div>
+  #   </div>
+  #   <% elsif flash[:alert].present? || params[:alert].present? %>
+  #   <div class="flash-message-container">
+  #     <div class="alert-message"><i class="fas fa-exclamation-circle"></i><span><%= flash[:alert] %><%= params[:alert] %></span></div>
+  #   </div>
+  # <% end %>
+
 

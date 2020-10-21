@@ -1,12 +1,18 @@
 class User < ApplicationRecord
-     has_many   :users_products, dependent: :destroy
-     has_many   :products, through: :users_products
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
-     has_many   :users_events, dependent: :destroy
-     has_many   :events, through: :users_events
+  has_many  :user_schools, dependent: :destroy
+  has_many  :schools, through: :user_schools
 
-     has_many   :users_families, dependent: :destroy
-     has_many   :families, through: :users_families
+  has_many  :users_posts, dependent: :destroy
+  has_many  :posts, through: :users_posts
 
-     validates :password, presence: true
+  has_many  :users_products, dependent: :destroy
+  has_many  :products, through: :users_products
+
+  has_one   :profile, dependent: :destroy
+
 end

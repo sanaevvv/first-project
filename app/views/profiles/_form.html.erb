@@ -1,0 +1,17 @@
+<%= form_with model: @profile, local: true do |f| %>
+     <dl>
+     <dt><%= f.label :name, "名前" %></dt>
+     <dd><%= f.text_field :name %></dd>
+
+     <dt><%= f.label :learning_history, "学習歴(年)" %></dt>
+     <dd><%= f.number_field :learning_history %></dd>
+
+     <dt><%= f.label :purpose, "目的" %></dt>
+     <dd><%= f.text_field :purpose %></dd>
+
+     <dt><%= f.label :image, "プロフィール画像" %></dt>
+     <dd><%= f.file_field :image %></dd>
+     </dl>
+     <p class="botton_wrap"><%= f.submit "送信する", class: "button" %></p>
+
+<% end %>

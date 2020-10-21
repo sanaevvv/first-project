@@ -1,0 +1,36 @@
+#registrations-new,
+#sessions-new {
+  h2 {
+    text-align: center;
+  }
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  .actions {
+    margin: 15px auto;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    width: 150px;
+    .button{
+      border-radius:5%;
+      text-align: center;
+      cursor:pointer;
+      padding: 12px;
+      background: #333;
+      color: #fff;
+      line-height: 1em;
+      transition: .3s;
+    }
+  }
+  .field{
+    margin: 10px 0;
+  }
+}

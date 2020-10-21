@@ -3,6 +3,7 @@
   <div>
    <div>
     <div>
+
      <%= form_with url: sessions_path, method: 'post' do |f| %>
           <p>メールアドレス</p>
           <%= f.text_field :email, id: 'email', placeholder: 'メールアドレス', value: ''  %>
@@ -11,6 +12,7 @@
      
           <%= f.submit 'ログイン' %>
      <% end %>
+
 </div>
 </div>
 </div>

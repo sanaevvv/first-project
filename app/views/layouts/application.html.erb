@@ -10,22 +10,11 @@
   </head>
 
   <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
-  <% if flash[:notice].present? || params[:notice].present? %>
-    <div class="flash-message-container">
-      <div class="notice-message"><i class="fas fa-check-circle"></i><span><%= flash[:notice] %><%= params[:notice] %></span></div>
-    </div>
-    <% elsif flash[:alert].present? || params[:alert].present? %>
-    <div class="flash-message-container">
-      <div class="alert-message"><i class="fas fa-exclamation-circle"></i><span><%= flash[:alert] %><%= params[:alert] %></span></div>
-    </div>
-  <% end %>
-  <main>
-  <div class="inner">
-  <%= render "shared/header" %>
-        <%= yield %>
-  <%= render "shared/footer" %>  
-  </div>
-  </main>
+      
+          <%= render 'shared/header' %>
+          <%= render 'shared/toast' %>
+          <%= yield %>
+       
+      <%= render 'shared/footer' %>  
   </body>
-
 </html>

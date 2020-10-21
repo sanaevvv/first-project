@@ -1,0 +1,49 @@
+#welcome-index {
+  max-width: 1200px;
+  margin: 0 auto;
+  .content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    .content-block {
+      border: 2px solid #000;
+      padding: 20px;
+      width: 60%;
+      .content {
+        border: 2px solid #000;
+        padding: 15px;
+        margin-bottom: 10px;
+        .user-about {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+          .image {
+            flex-basis: 12%;
+          }
+          .profile {
+            flex-basis: 85%;
+            .name {
+              font-weight: bold;
+              font-size: larger;
+            }
+            .purpose {
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+    }
+    .sidebar {
+      border: 2px solid #000;
+      width: 30%;
+      padding: 20px;
+      height: 100vh;
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #000000;
+        margin: 10px auto;
+      }
+    }
+  }
+}

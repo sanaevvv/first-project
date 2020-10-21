@@ -1,0 +1,55 @@
+<div class="content-wrapper">
+     <div class="content-block">
+          <% @posts.each do |post| %>
+               <div class="content">
+                    <div class="user-about">
+                         <div class="image">
+                              <%= image_tag "sakura.jpg" %>
+                         </div>
+                         <% post.users.each do |user| %>
+                         <div class="profile">
+                              <span class="name"><%= user.name %></span>
+                              <span>学習歴： ８年</span>
+                              <span>学歴： <% user.schools.each do |school| %>&nbsp;<%= school.name %><% end %></span>
+
+                              <p>おすすめ商品</p>
+                              <div style="border: 1px solid #ddd; box-sizing: border-box; padding: 5px;">
+                              <% user.products.each do |product| %>
+                                   <h2><%= product.name %></h2>
+                                   <p><%= product.description %></p>
+                              <% end %>
+                              </div>
+                              <p class="purpose">目的： テキストテキストテキストテキスト</p>        
+                         </div>
+                          <% end %>
+                    </div>  
+                    
+                    <p>タイトル：<%= post.title %></p>
+                    <p>コメント：<%= post.comment %></p>
+
+                    <% if post.images.attached? %>
+                         <div class="image">
+                         <% post.images.each do |image| %>
+                              <%= image_tag image %>
+                         <% end %>
+                         </div>
+                    <% end %>
+               
+                    <div class="action-menu">
+                         <div class="like">          
+                         </div>
+                         <div class="comment">
+                         </div>
+                    </div>
+               </div>
+          <% end %>
+     </div>   
+
+              
+     <aside class="sidebar">
+          <div class="box"></div>
+          <div class="box"></div>
+     </aside>
+</div>
+
+

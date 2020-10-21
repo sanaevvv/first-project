@@ -1,0 +1,27 @@
+<h1 class="new_task">タスクの詳細</h1>
+<%= link_to '一覧', tasks_path, class:"text_right" %>
+<table>
+     <tr class="dotted_border">
+          <th class="ttl">ID</th>
+          <td><%= @task.id %></td>
+     </tr>
+     <tr class="dotted_border">
+          <th class="ttl">名称</th>
+          <td><%= @task.name %></td>
+     </tr>
+     <tr class="dotted_border">
+          <th class="ttl">詳しい説明</th>
+          <td><%= simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div") %>
+          </td>
+     </tr>
+     <tr class="dotted_border">
+          <th class="ttl">登録日時</th>
+          <td><%= @task.created_at %></td>
+     </tr>
+     <tr class="dotted_border">
+          <th class="ttl">更新日時</th>
+          <td><%= @task.updated_at %></td>
+     </tr>
+</table>
+    <%=link_to '編集', edit_task_path, class: "edit" %>
+    <%=link_to '削除', @task, method: :delete, data:{confirm:"タスク「#{@task.name}」を削除します。よろしいですか？"}, class: "edit" %>

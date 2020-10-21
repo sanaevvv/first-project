@@ -1,0 +1,21 @@
+<h1>タスクの編集</h1>
+<%= link_to '一覧', tasks_path %>
+
+<% if @task.errors.present? %>
+  <div id="error_explanation">
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @task, local: true do |f| %>
+     <p><%= f.label :name, "名称" %></p>
+     <p><%= f.text_field :name, id: 'task_name', class: "input1 input"%></p>
+     <p><%= f.label :description, "詳しい説明" %></p>
+     <p><%= f.text_area :description, id: 'task_desctiption', class: "input2 input" %></p>
+
+     <%= f.submit "送信する" %>
+<% end %>
