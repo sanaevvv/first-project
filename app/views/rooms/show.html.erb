@@ -1,0 +1,15 @@
+<h1 class="sharehouse_search">シェアハウスを探す</h1>
+<div class="border">
+     <h2 class="card_title"><%= @room.name %></h2>
+     <div class="card_inner">
+          <div class="img"><%= "room#{room.id}" %></div>
+          <div>
+               <p class="star-rating-back">★★★★★</p>
+               <p><%= @room.price %></p>
+               <p><%= @room.description %></p>
+          </div>
+     </div>
+</div>
+
+
+<%= render 'reviews/form', review: @review, room: @room %>

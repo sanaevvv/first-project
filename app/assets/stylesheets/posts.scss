@@ -2,8 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-$color: #333;
-#posts-new {
+#posts-new, #posts-edit, #posts-create, #posts-update {
   .post_create {
     font-weight: bold;
     font-size: 20px;
@@ -29,16 +28,16 @@ $color: #333;
         text-align: center; /* 文字位置   */
         cursor: pointer; /* カーソル   */
         padding: 12px 12px; /* 余白       */
-        background: $color; /* 背景色     */
+        background: #333333;; /* 背景色     */
         color: #ffffff; /* 文字色     */
         line-height: 1em; /* 1行の高さ  */
         transition: 0.3s; /* なめらか変化 */
         box-shadow: 3px 3px 1px #666666; /* 影の設定 */
-        border: 2px solid $color; /* 枠の指定 */
+        border: 2px solid #333333; /* 枠の指定 */
 
         &:hover {
           box-shadow: none; /* カーソル時の影消去 */
-          color: $color; /* 文字色     */
+          color: #333333; /* 文字色     */
           background: #fff; /* 背景色     */
           transform: translate(3px, 3px);
         }

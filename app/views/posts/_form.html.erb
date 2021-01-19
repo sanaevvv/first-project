@@ -1,0 +1,13 @@
+<%= provide :title, 'Home' %>
+  <%= form_with model: @post, local: true do |f| %>
+          <dl>
+          <dt><%= f.label :title, "タイトル" %></dt>
+          <dd><%= f.text_field :title %></dd>
+
+          <dt><%= f.label :comment, "コメント" %></dt>
+          <dd><%= f.text_area :comment, rows: 5 %></dd>
+          <dd><%= f.file_field :images, multiple: true %></dd>
+          </dl>
+          <p class="botton_wrap"><%= f.submit "送信する", class: "button" %></p>
+
+     <% end %>

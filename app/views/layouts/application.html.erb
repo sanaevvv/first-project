@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>初めてのRuby</title>
+    <title><%= full_title(yield :title) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+    <!-- フォントオーサム -->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
-      
           <%= render 'shared/header' %>
           <%= render 'shared/toast' %>
+          
           <%= yield %>
-       
-      <%= render 'shared/footer' %>  
+
+      <%= render 'shared/footer' %>
   </body>
 </html>

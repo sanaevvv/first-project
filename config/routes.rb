@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
+  get 'reviews/index'
   devise_for :users, controllers:{
     registrations: 'devise/registrations',
     sessions: 'devise/sessions'
   }
+  root 'rooms#index'
+  resources :rooms, only: %i[index show] do
+    resources :reviews, only: %i[index create]
+  end
 
-  root 'welcome#index'
+  # resources :profiles, only: %i[show new edit create update]
+  # resources :posts
 
-  resources :profiles, only: %i[show new edit create update]
-  resources :posts
+
 
 
   # root 'tasks#index'

@@ -4,7 +4,7 @@
      <dd><%= f.text_field :name %></dd>
 
      <dt><%= f.label :learning_history, "学習歴(年)" %></dt>
-     <dd><%= f.number_field :learning_history %></dd>
+     <dd><%= f.number_field :learning_history, min:1,max:10000 %></dd>
 
      <dt><%= f.label :purpose, "目的" %></dt>
      <dd><%= f.text_field :purpose %></dd>
@@ -12,6 +12,7 @@
      <dt><%= f.label :image, "プロフィール画像" %></dt>
      <dd><%= f.file_field :image %></dd>
      </dl>
-     <p class="botton_wrap"><%= f.submit "送信する", class: "button" %></p>
+
+    <%= f.submit "送信する", class: "button" %>
 
 <% end %>

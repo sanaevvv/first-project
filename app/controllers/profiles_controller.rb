@@ -6,6 +6,7 @@ def show
 end
 
 def new
+     return redirect_to edit_profile_path(current_user.profile) if current_user.profile.present?
      @profile = Profile.new
 end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_153354) do
+ActiveRecord::Schema.define(version: 2020_11_02_163909) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -91,6 +91,26 @@ ActiveRecord::Schema.define(version: 2020_10_13_153354) do
     t.text "answer", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "room_id", null: false
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.integer "score"
+    t.index ["room_id"], name: "index_reviews_on_room_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
   end
 
   create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -196,6 +216,8 @@ ActiveRecord::Schema.define(version: 2020_10_13_153354) do
   add_foreign_key "product_categories", "categories"
   add_foreign_key "product_categories", "products"
   add_foreign_key "profiles", "users"
+  add_foreign_key "reviews", "rooms"
+  add_foreign_key "reviews", "users"
   add_foreign_key "student_schools", "schools", column: "schools_id"
   add_foreign_key "student_schools", "students", column: "students_id"
   add_foreign_key "user_schools", "schools"

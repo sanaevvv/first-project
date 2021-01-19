@@ -4,6 +4,15 @@ module ApplicationHelper
                @current_user ||= User.find(session[:user_id])
           end
      end
+
+     def full_title(page_title)
+          base_title = 'Ruby'
+          if page_title.empty?
+               base_title
+          else
+               "#{base_title} | #{page_title}"
+          end
+     end
 end
 
 # これは、nilかfalseの場合のみ値を入れるというものです！
@@ -11,3 +20,5 @@ end
 # 今回の場合、@current_userというインスタンス変数が見つからなければ、再度Userテーブルからユーザーを探して挿入する…という記述です！
 
 # @current_userに値を入れているのは、同じリクエストの中で複数回DBを呼ぶのを避けるためです。
+
+
